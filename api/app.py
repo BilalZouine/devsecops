@@ -20,10 +20,10 @@ def login():
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
 
-    query = f"SELECT * FROM users WHERE username='{username}' AND password='{password}'"
-    
-    
+    # ❌ SQL Injection évidente
+    query = "SELECT * FROM users WHERE username='" + username + "' AND password='" + password + "'"
     cursor.execute(query)
+    
     
     # cursor.execute(
     #     "SELECT * FROM users WHERE username=? AND password=?",
