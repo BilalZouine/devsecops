@@ -6,9 +6,9 @@ import os
 
 app = Flask(__name__)
 
-SECRET_KEY = "dev-secret-key-12345"  # Hardcoded secret
+# SECRET_KEY = "dev-secret-key-12345"  # Hardcoded secret
 
-# SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key-12345")
+SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key-12345")
 
 
 
@@ -41,13 +41,13 @@ def ping():
     
     host = request.json.get("host", "")
         
-    cmd = f"ping -c 1 {host}"
+    # cmd = f"ping -c 1 {host}"
     
-    output = subprocess.check_output(cmd, shell=True)
+    # output = subprocess.check_output(cmd, shell=True)
     
-    # output = subprocess.check_output(
-    #     ["ping", "-c", "1", host], stderr=subprocess.STDOUT, timeout=5
-    # )
+    output = subprocess.check_output(
+        ["ping", "-c", "1", host], stderr=subprocess.STDOUT, timeout=5
+    )
 
     return {"output": output.decode()}
 
@@ -63,9 +63,9 @@ def compute():
 def hash_password():
     pwd = request.json.get("password", "admin")
     
-    hashed = hashlib.md5(pwd.encode()).hexdigest()
+    # hashed = hashlib.md5(pwd.encode()).hexdigest()
     
-    # hashed = hashlib.sha256(pwd.encode()).hexdigest()
+    hashed = hashlib.sha256(pwd.encode()).hexdigest()
     
     return {"sha256": hashed}
 
