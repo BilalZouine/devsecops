@@ -10,28 +10,28 @@ EXPOSE 5000
 
 CMD ["python", "app.py"]
 
-# # ❌ Mauvaise pratique : image Python obsolète avec CVE connues
+# #  Mauvaise pratique : image Python obsolète avec CVE connues
 # FROM python:3.6
 
-# # ❌ Mauvaise pratique : exécution en root (par défaut)
+# #  Mauvaise pratique : exécution en root (par défaut)
 # WORKDIR /app
 
-# # ❌ Mauvaise pratique : tout copier (y compris secrets, .env, .git)
+# #  Mauvaise pratique : tout copier (y compris secrets, .env, .git)
 # COPY . .
 
-# # ❌ Mauvaise pratique : pas de versions figées + dépendances vulnérables
+# #  Mauvaise pratique : pas de versions figées + dépendances vulnérables
 # RUN pip install flask==0.12 \
 #     && pip install requests==2.19.1
 
-# # ❌ Mauvaise pratique : variables sensibles en clair
+# #  Mauvaise pratique : variables sensibles en clair
 # ENV SECRET_KEY=hardcoded-secret-key
 # ENV DEBUG=true
 
-# # ❌ Mauvaise pratique : permissions trop larges
+# #  Mauvaise pratique : permissions trop larges
 # RUN chmod -R 777 /app
 
-# # ❌ Mauvaise pratique : port exposé sans justification
+# #  Mauvaise pratique : port exposé sans justification
 # EXPOSE 5000
 
-# # ❌ Mauvaise pratique : commande shell non sécurisée
+# #  Mauvaise pratique : commande shell non sécurisée
 # CMD python app.py
